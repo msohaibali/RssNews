@@ -164,6 +164,7 @@ def NewsContent(lnk):
                     p_content = p_content + p.text
 
                 body = p_content
+                body = body.replace("\n", "")
                 print(body)
 
                 date = parser.parse(publishedTime[cnt])
