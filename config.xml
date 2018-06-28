@@ -1,0 +1,13 @@
+<data>
+    <Project>
+        <Database>IDEA</Database>
+        <MongoIP>mongodb://192.168.100.5:27017</MongoIP>
+        <ShardIP>mongodb://192.168.100.109:27017</ShardIP>
+        <RedisIP>192.168.100.3</RedisIP>
+        <RedisPort>6379</RedisPort>
+        <userName>admin</userName>
+        <pass>admin12345</pass>
+        <collection>RssNews</collection>
+        <collection2>RssNewsErrorLogs</collection2>
+    </Project>
+</data>

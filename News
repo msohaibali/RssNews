@@ -1,0 +1,55 @@
+runtime/local/bin/nutch inject urls/
+runtime/local/bin/nutch generate -topN 50
+runtime/local/bin/nutch fetch -all
+runtime/local/bin/nutch parse -all
+runtime/local/bin/nutch updatedb -all
+runtime/local/bin/nutch solrindex http://localhost:8983/solr/nutch -all
+
+
+
+
+<property>
+ <name>db.ignore.external.links</name>
+ <value>true</value>
+</property>
+
+-[?*!@=]
+
+
+-.*[?*!@=].*
+
+
+ <property>
+    <name>plugin.includes</name>
+    <value>protocol-httpclient|urlfilter-regex|index-(basic|more)|query-(basic|site|url|lang)|indexer-solr|nutch-extensionpoints|protocol-httpclient|urlfilter-regex|parse-(text|html|msexcel|msword|mspowerpoint|pdf)|summary-basic|scoring-opic|urlnormalizer-(pass|regex|basic)protocol-http|urlfilter-regex|parse-(html|tika|metatags)|index-(basic|anchor|more|metadata)</value>
+ </property>
+
+
+
+enablePositionIncrements="true"
+
+
+
+http://feeds.bbci.co.uk/zhongwen/simp/rss.xml
+http://feeds.bbci.co.uk/news/rss.xml
+http://feeds.bbci.co.uk/hindi/rss.xml
+http://feeds.bbci.co.uk/pashto/rss.xml
+http://feeds.bbci.co.uk/urdu/rss.xml
+https://www.cbsnews.com/latest/rss/main
+https://www.cnbc.com/id/100003114/device/rss/rss.html
+http://rss.cnn.com/rss/edition.rss
+https://dailytimes.com.pk/feed/
+https://www.geo.tv/rss/1/2
+https://www.huffingtonpost.com/section/weird-news/feed
+http://www.hindustantimes.com/rss/topnews/rssfeed.xml
+http://www.indiatvnews.com/rssnews/topstory.xml
+http://www.nawaiwaqt.com.pk/feeds/international
+http://www.newindianexpress.com/Nation/rssfeed/?id=170&getXmlFeed=true
+https://www.newsmax.com/rss/US/18/
+http://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml
+http://www.oann.com/category/newsroom/feed/
+http://feeds.reuters.com/Reuters/worldNews
+https://www.thenews.com.pk/rss/1/1
+https://www.voanews.com/api/zq$omekvi_
+http://feeds.washingtonpost.com/rss/world
+
