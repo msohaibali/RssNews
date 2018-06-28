@@ -109,6 +109,7 @@ data.append(collection1.distinct('_id'))
 
 def NewsContent(lnk):
     fit = ''
+    title = ''
     for d28 in data:
         for index in range(0, len(d28)):
             if d28[index] == lnk:
@@ -148,21 +149,30 @@ def NewsContent(lnk):
                     p_content = p_content + p.text
 
                 body = p_content
+                body = body.replace("\n", "")
+
                 print(body)
                 date = parser.parse(publishedTime[cnt])
                 publishedTime[cnt] = date.isoformat()
                 publishedTime[cnt] = arrow.get(publishedTime[cnt]).datetime
                 print(publishedTime[cnt])
 
-                try:
+                if title is '':
+                    print("This is a Photo or Video, Content doesnot Exists!")
 
-                    collection1.insert([{"Type": "Predefined List", "Category": "International", "Language": "English",
-                                         "Source": "Financial Express", "title": title, "body": body, "_id": lnk,
-                                         "published Time": publishedTime[cnt]}])
-                    r.rpush('news_link', lnk)
+                elif body is '':
+                    print("This is a Photo or Video, Content doesnot Exists!")
 
-                except:
-                    pass
+                else:
+                    try:
+
+                        collection1.insert([{"Type": "Predefined List", "Category": "International", "Language": "English",
+                                             "Source": "Financial Express", "title": title, "body": body, "_id": lnk,
+                                             "published Time": publishedTime[cnt]}])
+                        r.rpush('news_link', lnk)
+
+                    except:
+                        pass
 
             except:
                 print("Didn't found the class")

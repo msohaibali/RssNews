@@ -199,6 +199,39 @@ def NewsContent(lnk):
                         pass
 
                 if title is '':
+                    curr_post = driver.find_element_by_xpath('//div/h1')
+                    p_content1 = curr_post.text
+
+                    title = p_content1
+                    print(title)
+
+                if body is '':
+                    p_content = ''
+                    targ_p1 = driver.find_elements_by_xpath('//div[@class="story__content        "]/p')
+
+                    for p in targ_p1:
+                        p_content = p_content + p.text
+
+                    body = p_content
+                    body = body.replace("\n", "")
+                    body = body.replace("کاپی رائٹ © 2018", "")
+
+                    print(body)
+
+                if body is '':
+                    p_content = ''
+                    targ_p1 = driver.find_elements_by_xpath('//div[@class="story__content"]/p')
+
+                    for p in targ_p1:
+                        p_content = p_content + p.text
+
+                    body = p_content
+                    body = body.replace("\n", "")
+                    body = body.replace("کاپی رائٹ © 2018", "")
+
+                    print(body)
+
+                elif title is '':
                     print("This is a Photo or Video, Content doesn't Exists!")
 
                 elif body is '':

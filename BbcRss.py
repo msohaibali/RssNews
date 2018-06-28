@@ -328,6 +328,9 @@ def NewsContent(lnk):
                 elif title is 'BBC News Channel':
                     print("It is a Video, No Content Found!")
 
+                elif body is 'BBC News Channel':
+                    print("It is a Video, No Content Found!")
+
                 elif pubTime is '':
                     print("Date of this link is not valid!!")
 
