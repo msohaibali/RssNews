@@ -174,11 +174,21 @@ def NewsContent(lnk):
                 body = body.replace(junk1, "")
                 print(body)
 
-                collection1.insert([{"Type": "Predefined List", "Category": "International", "Language": "Chinese",
-                                     "published Time": pubTime, "Source": "BBC Chinese", "title": title, "body": body,
-                                     "_id": lnk}])
-                r.rpush('news_link', lnk)
-                print("Publish Date: ", pubTime)
+                if title is '':
+                    print("This is a Photo or Video, Content doesnot Exists!")
+
+                elif body is '':
+                    print("This is a Photo or Video, Content doesnot Exists!")
+
+                elif pubTime is '':
+                    print("This is a Photo or Video, Content doesnot Exists!")
+
+                else:
+                    collection1.insert([{"Type": "Predefined List", "Category": "International", "Language": "Chinese",
+                                         "published Time": pubTime, "Source": "BBC Chinese", "title": title, "body": body,
+                                         "_id": lnk}])
+                    r.rpush('news_link', lnk)
+                    print("Publish Date: ", pubTime)
 
             except:
                 print("Didn't found the class")

@@ -165,14 +165,23 @@ def NewsContent(lnk):
                 publishedTime[cnt] = arrow.get(publishedTime[cnt]).datetime
                 print(publishedTime[cnt])
 
+                if title is '':
+                    print("This is a Photo or Video, Content doesnot Exists!")
 
-                try:
-                    collection1.insert([{"Type": "Predefined List", "Category": "National", "Language": "English",
-                                         "Source": "Ary News", "title": title, "body": body, "_id": lnk,
-                                         "published Time": publishedTime[cnt]}])
-                    r.rpush('news_link', lnk)
-                except:
-                    pass
+                elif body is '':
+                    print("This is a Photo or Video, Content doesnot Exists!")
+
+                elif publishedTime[cnt] is '':
+                    print("This is a Photo or Video, Content doesnot Exists!")
+
+                else:
+                    try:
+                        collection1.insert([{"Type": "Predefined List", "Category": "National", "Language": "English",
+                                             "Source": "Ary News", "title": title, "body": body, "_id": lnk,
+                                             "published Time": publishedTime[cnt]}])
+                        r.rpush('news_link', lnk)
+                    except:
+                        pass
 
 
             except:
